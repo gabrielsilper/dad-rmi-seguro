@@ -20,13 +20,13 @@ public class SeguroDAO {
         }
     }
 
-    public List<SeguroEntity> buscarPorDestino(String destino) {
+    public SeguroEntity buscarPorDestino(String destino) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Query<SeguroEntity> query = session.createNativeQuery(
-                    "SELECT * FROM seguros WHERE destino LIKE :destino",
+                    "SELECT * FROM seguros WHERE destino = :destino",
                     SeguroEntity.class);
-            query.setParameter("destino", "%" + destino + "%");
-            return query.getResultList();
+            query.setParameter("destino", destino);
+            return query.getResultList().stream().findFirst().orElse(null);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
