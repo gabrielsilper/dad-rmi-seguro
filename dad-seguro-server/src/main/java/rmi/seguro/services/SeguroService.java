@@ -1,6 +1,7 @@
 package rmi.seguro.services;
 
 import rmi.seguro.dao.SeguroDAO;
+import rmi.seguro.entities.SeguroEntity;
 import rmi.seguro.models.Seguro;
 
 public class SeguroService {
@@ -11,6 +12,17 @@ public class SeguroService {
     }
 
     public Seguro pesquisaSeguro(String destino) {
-        return seguroDAO.buscarPorDestino(destino);
+        SeguroEntity seguroEntity = seguroDAO.buscarPorDestino(destino);
+
+        if (seguroEntity == null) {
+            return null;
+        }
+
+        Seguro seguro = new Seguro();
+        seguro.setId(seguroEntity.getId());
+        seguro.setDestino(seguroEntity.getDestino());
+        seguro.setValor(seguroEntity.getValor());
+
+        return seguro;
     }
 }
