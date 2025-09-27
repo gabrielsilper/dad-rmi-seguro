@@ -20,10 +20,10 @@ public class SeguroDAO {
         }
     }
 
-    public SeguroEntity buscarPorDestino(String destino) {
+    public SeguroEntity buscarPorDestino(String codigo) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Query<SeguroEntity> query = session.createNativeQuery(
-                    "SELECT * FROM seguros WHERE destino = :destino",
+                    "SELECT * FROM seguros WHERE codigo_ibge = :destino",
                     SeguroEntity.class);
             query.setParameter("destino", destino);
             return query.getResultList().stream().findFirst().orElse(null);

@@ -4,7 +4,9 @@ import rmi.seguro.models.Seguro;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.List;
 
 public interface ISeguro extends Remote {
-    public Seguro pesquisaSeguro(String destino) throws RemoteException;
+    public List<Seguro> listaSeguros() throws RemoteException;
+    public Seguro pesquisaSeguro(int codigoIBGE) throws RemoteException;
 }
