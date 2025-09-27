@@ -10,8 +10,8 @@ public class SeguroClient {
 
     public static void main(String[] args) {
         try {
-            Registry registro = LocateRegistry.getRegistry("10.100.38.55", 2000);
-            ISeguro seguroRemote = (ISeguro) registro.lookup("rmi://10.100.38.55:" + 2000 + "/seguros");
+            Registry registro = LocateRegistry.getRegistry("localhost", 2000);
+            ISeguro seguroRemote = (ISeguro) registro.lookup("rmi://localhost:" + 2000 + "/seguros");
 
             System.out.println("Cliente conectado ao Servidor RMI na porta " + 2000 + ".");
             String destinoDesejado = "Maringá";
@@ -22,6 +22,7 @@ public class SeguroClient {
             if (seguroResultado != null) {
                 System.out.println("--- Dados do Seguro Encontrado ---");
                 System.out.println("Destino: " + seguroResultado.getDestino());
+                System.out.println("Código IBGE: " + seguroResultado.getCodigoIBGE());
                 System.out.println("Valor: R$" + seguroResultado.getValor());
                 System.out.println("---------------------------------");
             } else {
