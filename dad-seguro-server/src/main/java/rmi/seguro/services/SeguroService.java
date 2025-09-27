@@ -22,6 +22,7 @@ public class SeguroService {
         seguro.setId(seguroEntity.getId());
         seguro.setDestino(seguroEntity.getDestino());
         seguro.setValor(seguroEntity.getValor());
+        seguro.setCodigoIBGE(seguroEntity.getCodigoIBGE());
 
         return seguro;
     }

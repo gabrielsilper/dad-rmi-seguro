@@ -28,5 +28,7 @@ public class SeguroEntity extends Seguro {
 
     @Column(name = "codigo_ibge", nullable = false)
     @Override
-    public int get
+    public int getCodigoIBGE(){
+        return super.getCodigoIBGE();
+    }
 }
