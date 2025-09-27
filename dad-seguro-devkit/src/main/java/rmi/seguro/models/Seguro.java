@@ -6,14 +6,16 @@ import java.util.Objects;
 
 public class Seguro implements Serializable {
     @Serial
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
     private long id;
     private String destino;
     private double valor;
+    private int codigoIBGE;
 
-    public Seguro(String destino, double valor) {
+    public Seguro(String destino, double valor, int codigoIBGE) {
         this.destino = destino;
         this.valor = valor;
+        this.codigoIBGE = codigoIBGE;
     }
 
     public Seguro() {
@@ -43,16 +45,24 @@ public class Seguro implements Serializable {
         this.valor = valor;
     }
 
+    public int getCodigoIBGE() {
+        return codigoIBGE;
+    }
+
+    public void setCodigoIBGE(int codigoIBGE) {
+        this.codigoIBGE = codigoIBGE;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Seguro seguro = (Seguro) o;
-        return id == seguro.id && Double.compare(valor, seguro.valor) == 0 && Objects.equals(destino, seguro.destino);
+        return id == seguro.id && Double.compare(valor, seguro.valor) == 0 && codigoIBGE == seguro.codigoIBGE && Objects.equals(destino, seguro.destino);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, destino, valor);
+        return Objects.hash(id, destino, valor, codigoIBGE);
     }
 
     @Override
@@ -61,6 +71,7 @@ public class Seguro implements Serializable {
                 "id=" + id +
                 ", destino='" + destino + '\'' +
                 ", valor=" + valor +
+                ", codigoIBGE=" + codigoIBGE +
                 '}';
     }
 }
