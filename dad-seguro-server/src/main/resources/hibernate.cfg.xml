@@ -16,7 +16,7 @@
         <property name="hibernate.connection.pool_size">10</property>
 
         <!-- Configurações de DDL -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!-- Mostrar SQL no console -->
         <property name="hibernate.show_sql">true</property>

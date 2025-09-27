@@ -10,11 +10,11 @@ public class SeguroClient {
 
     public static void main(String[] args) {
         try {
-            Registry registro = LocateRegistry.getRegistry("localhost", 2000);
-            ISeguro seguroRemote = (ISeguro) registro.lookup("rmi://localhost:" + 2000 + "/seguros");
+            Registry registro = LocateRegistry.getRegistry("10.100.38.55", 2000);
+            ISeguro seguroRemote = (ISeguro) registro.lookup("rmi://10.100.38.55:" + 2000 + "/seguros");
 
             System.out.println("Cliente conectado ao Servidor RMI na porta " + 2000 + ".");
-            String destinoDesejado = "Manaus";
+            String destinoDesejado = "Maringá";
             System.out.println("Buscando seguro para o destino: " + destinoDesejado + "...");
 
             Seguro seguroResultado = seguroRemote.pesquisaSeguro(destinoDesejado);

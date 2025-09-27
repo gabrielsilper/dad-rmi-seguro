@@ -25,4 +25,8 @@ public class SeguroEntity extends Seguro {
     public double getValor() {
         return super.getValor();
     }
+
+    @Column(name = "codigo_ibge", nullable = false)
+    @Override
+    public int get
 }
