@@ -4,6 +4,8 @@ import rmi.seguro.dao.SeguroDAO;
 import rmi.seguro.entities.SeguroEntity;
 import rmi.seguro.models.Seguro;
 
+import java.util.List;
+
 public class SeguroService {
     private final SeguroDAO seguroDAO;
 
@@ -11,19 +13,19 @@ public class SeguroService {
         this.seguroDAO = new SeguroDAO();
     }
 
-    public Seguro pesquisaSeguro(String destino) {
+    public List<Seguro> listaSeguros() {
+        List<SeguroEntity> seguroEntities = seguroDAO.listarTodos();
+
+        return seguroEntities.stream().map(SeguroEntity::toSeguro).toList();
+    }
+
+    public Seguro pesquisaSeguro(int destino) {
         SeguroEntity seguroEntity = seguroDAO.buscarPorDestino(destino);
 
         if (seguroEntity == null) {
             return null;
         }
 
-        Seguro seguro = new Seguro();
-        seguro.setId(seguroEntity.getId());
-        seguro.setDestino(seguroEntity.getDestino());
-        seguro.setValor(seguroEntity.getValor());
-        seguro.setCodigoIBGE(seguroEntity.getCodigoIBGE());
-
-        return seguro;
+        return seguroEntity.toSeguro();
     }
 }

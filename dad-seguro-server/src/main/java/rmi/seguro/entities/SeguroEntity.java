@@ -31,4 +31,14 @@ public class SeguroEntity extends Seguro {
     public int getCodigoIBGE(){
         return super.getCodigoIBGE();
     }
+
+    public Seguro toSeguro(){
+        Seguro seguro = new Seguro();
+        seguro.setId(this.getId());
+        seguro.setDestino(this.getDestino());
+        seguro.setValor(this.getValor());
+        seguro.setCodigoIBGE(this.getCodigoIBGE());
+
+        return seguro;
+    }
 }

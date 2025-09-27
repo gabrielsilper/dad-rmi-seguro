@@ -20,12 +20,12 @@ public class SeguroDAO {
         }
     }
 
-    public SeguroEntity buscarPorDestino(String codigo) {
+    public SeguroEntity buscarPorDestino(int codigoIBGE) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Query<SeguroEntity> query = session.createNativeQuery(
-                    "SELECT * FROM seguros WHERE codigo_ibge = :destino",
+                    "SELECT * FROM seguros WHERE codigo_ibge = :ibge",
                     SeguroEntity.class);
-            query.setParameter("destino", destino);
+            query.setParameter("ibge", codigoIBGE);
             return query.getResultList().stream().findFirst().orElse(null);
         } catch (Exception e) {
             e.printStackTrace();

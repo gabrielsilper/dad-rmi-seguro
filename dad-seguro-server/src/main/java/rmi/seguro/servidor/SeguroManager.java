@@ -6,6 +6,7 @@ import rmi.seguro.services.SeguroService;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
 
 public class SeguroManager extends UnicastRemoteObject implements ISeguro {
     private final SeguroService seguroService;
@@ -16,7 +17,12 @@ public class SeguroManager extends UnicastRemoteObject implements ISeguro {
     }
 
     @Override
-    public Seguro pesquisaSeguro(String destino) throws RemoteException {
+    public List<Seguro> listaSeguros() throws RemoteException {
+        return seguroService.listaSeguros();
+    }
+
+    @Override
+    public Seguro pesquisaSeguro(int destino) throws RemoteException {
         return seguroService.pesquisaSeguro(destino);
     }
 }
